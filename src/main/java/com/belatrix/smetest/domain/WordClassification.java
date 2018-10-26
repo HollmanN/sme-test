@@ -24,4 +24,10 @@ public class WordClassification {
     public void setWordCategory(String wordCategory) {
         this.wordCategory = wordCategory;
     }
+
+    @Override
+    public String toString() {
+        return
+                "Word '" + word + '\'' + " represents a " + wordCategory;
+    }
 }
