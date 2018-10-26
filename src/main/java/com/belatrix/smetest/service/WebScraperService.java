@@ -3,14 +3,20 @@ package com.belatrix.smetest.service;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.google.common.base.Splitter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.Duration;
+import java.time.Instant;
 
 @Service
 public class WebScraperService {
 
     private final WebClient webClient;
     private static final Splitter SPLITTER = Splitter.fixedLength(200).omitEmptyStrings();
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     public WebScraperService(WebClient webClient) {
@@ -22,7 +28,12 @@ public class WebScraperService {
         webClient.getOptions().setCssEnabled(false);
         webClient.getOptions().setJavaScriptEnabled(false);
         try {
+            logger.debug("Fetching {}", url);
+            Instant start = Instant.now();
             page = webClient.getPage(url);
+            Instant finish = Instant.now();
+            long timeElapsed = Duration.between(start, finish).toMillis();
+            logger.debug("Total time {}", timeElapsed);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,6 +41,7 @@ public class WebScraperService {
     }
 
     public Iterable<String> dividePage(HtmlPage page) {
+        logger.debug("Processing content from {}", page.getBaseURL().toString());
         String pageAsText = page.asText();
         Iterable<String> chunks = null;
         try {
@@ -37,7 +49,7 @@ public class WebScraperService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        logger.debug("Split process successful");
         return chunks;
     }
 }
