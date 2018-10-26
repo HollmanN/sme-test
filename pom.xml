@@ -22,8 +22,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <htmlunit.version>2.32</htmlunit.version>
+        <htmlunit.version>2.33</htmlunit.version>
         <stanford.nlp.version>3.9.2</stanford.nlp.version>
+        <guava.version>27.0-jre</guava.version>
     </properties>
 
     <dependencies>
@@ -52,6 +53,12 @@
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-corenlp</artifactId>
             <version>${stanford.nlp.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.0-jre</version>
         </dependency>
     </dependencies>
 
