@@ -25,7 +25,7 @@ public class ClassificationService {
             for (List<CoreLabel> sentence : out) {
                 for (CoreLabel word : sentence) {
                     String classification = word.get(CoreAnnotations.AnswerAnnotation.class);
-                    if (!classification.equals("O")) {
+                    if (classification.equals("PERSON")) {
                         wordCategories.add(new WordClassification(word.word(), word.get(CoreAnnotations.AnswerAnnotation.class)));
                     }
                 }
