@@ -28,12 +28,12 @@ public class WebScraperService {
         webClient.getOptions().setCssEnabled(false);
         webClient.getOptions().setJavaScriptEnabled(false);
         try {
-            logger.debug("Fetching {}", url);
+            logger.info("Fetching {}", url);
             Instant start = Instant.now();
             page = webClient.getPage(url);
             Instant finish = Instant.now();
             long timeElapsed = Duration.between(start, finish).toMillis();
-            logger.debug("Total time {}", timeElapsed);
+            logger.info("Total time {}", timeElapsed);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -41,7 +41,7 @@ public class WebScraperService {
     }
 
     public Iterable<String> dividePage(HtmlPage page) {
-        logger.debug("Processing content from {}", page.getBaseURL().toString());
+        logger.info("Processing content from {}", page.getBaseURL().toString());
         String pageAsText = page.asText();
         Iterable<String> chunks = null;
         try {
@@ -49,7 +49,7 @@ public class WebScraperService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        logger.debug("Split process successful");
+        logger.info("Split process successful");
         return chunks;
     }
 }
