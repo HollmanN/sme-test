@@ -35,7 +35,7 @@ public class WebScraperService {
             long timeElapsed = Duration.between(start, finish).toMillis();
             logger.info("Total time {}", timeElapsed);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.info("Error fetching page {}", url);
         }
         return page;
     }
@@ -47,7 +47,7 @@ public class WebScraperService {
         try {
             chunks = SPLITTER.split(pageAsText);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.info("Error dividing page {}", page.getBaseURL());
         }
         logger.info("Split process successful");
         return chunks;
