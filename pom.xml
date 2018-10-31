@@ -25,6 +25,7 @@
         <htmlunit.version>2.33</htmlunit.version>
         <stanford.nlp.version>3.9.2</stanford.nlp.version>
         <guava.version>27.0-jre</guava.version>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
 
     <dependencies>
@@ -59,6 +60,18 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>27.0-jre</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
         </dependency>
     </dependencies>
 
