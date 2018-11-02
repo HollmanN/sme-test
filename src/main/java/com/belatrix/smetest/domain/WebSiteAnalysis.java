@@ -1,6 +1,7 @@
 package com.belatrix.smetest.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WebSiteAnalysis {
     private WebSite webSite;
@@ -37,5 +38,9 @@ public class WebSiteAnalysis {
                 "webSite=" + webSite +
                 ", contentClassification=" + contentClassification +
                 '}';
+    }
+
+    public List<String[]> asCSV() {
+        return contentClassification.stream().map(WordClassification::asCSV).collect(Collectors.toList());
     }
 }

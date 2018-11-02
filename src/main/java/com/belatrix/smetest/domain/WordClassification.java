@@ -30,4 +30,8 @@ public class WordClassification {
         return
                 "Word '" + word + '\'' + " represents a " + wordCategory;
     }
+
+    public String[] asCSV() {
+        return new String[]{word, wordCategory};
+    }
 }
