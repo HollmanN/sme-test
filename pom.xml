@@ -26,6 +26,7 @@
         <stanford.nlp.version>3.9.2</stanford.nlp.version>
         <guava.version>27.0-jre</guava.version>
         <swagger.version>2.9.2</swagger.version>
+        <opencsv.version>4.3.2</opencsv.version>
     </properties>
 
     <dependencies>
@@ -73,6 +74,13 @@
             <artifactId>springfox-swagger2</artifactId>
             <version>${swagger.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>${opencsv.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
