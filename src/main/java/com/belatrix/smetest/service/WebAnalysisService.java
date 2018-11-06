@@ -1,9 +1,11 @@
 package com.belatrix.smetest.service;
 
+import com.belatrix.smetest.domain.WebAnalysisReporter;
 import com.belatrix.smetest.domain.WebSite;
 import com.belatrix.smetest.domain.WebSiteAnalysis;
 import com.belatrix.smetest.domain.WordClassification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.net.URL;
@@ -14,11 +16,14 @@ import java.util.List;
 public class WebAnalysisService {
     private final ClassificationService classificationService;
     private final WebScraperService webScraperService;
+    private final WebAnalysisReporter webAnalysisReporter;
 
     @Autowired
-    public WebAnalysisService(ClassificationService classificationService, WebScraperService webScraperService) {
+    public WebAnalysisService(ClassificationService classificationService, WebScraperService webScraperService,
+                              @Qualifier("file-reporter") WebAnalysisReporter webAnalysisReporter) {
         this.classificationService = classificationService;
         this.webScraperService = webScraperService;
+        this.webAnalysisReporter = webAnalysisReporter;
     }
 
     public List<WebSiteAnalysis> analyzeWeb(List<WebSite> webSites){
