@@ -1,5 +1,7 @@
 package com.belatrix.smetest.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class WebSiteAnalysisFileInput {
     private String inputPath;
     private String inputFileName;
@@ -12,6 +14,7 @@ public class WebSiteAnalysisFileInput {
         this.inputFileName = inputFileName;
     }
 
+    @JsonIgnore
     public String getFullPath() {
         return inputPath + inputFileName;
     }
